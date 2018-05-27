@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_meditate"
+        android:icon="@drawable/ic_play_circle_filled_white_24dp"
+        android:title="Meditate"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_me"
+        android:icon="@drawable/ic_person_white_24dp"
+        android:title="Me"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_more_horiz_white_24dp"
+        android:title="More"
+        app:showAsAction="always|withText" />
+
+</menu>

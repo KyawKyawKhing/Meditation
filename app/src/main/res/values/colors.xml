@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#383E4E</color>
+    <color name="colorPrimaryDark">#202633</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="selectedTab">#5B6B7B</color>
+    <color name="mainBG">#212838</color>
+    <color name="textColor">#fff</color>
+    <color name="colorBtn">#7DC4C8</color>
+    <color name="colorBtnClick">#5a8e91</color>
+    <color name="imageBtn">#AFCDD5</color>
+</resources>
