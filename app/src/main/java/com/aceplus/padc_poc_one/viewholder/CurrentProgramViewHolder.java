@@ -3,9 +3,11 @@ package com.aceplus.padc_poc_one.viewholder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aceplus.padc_poc_one.R;
 import com.aceplus.padc_poc_one.data.vo.CurrentProgramVO;
+import com.aceplus.padc_poc_one.data.vo.MainVO;
 import com.aceplus.padc_poc_one.delegates.MeditateSeriesDelegate;
 
 import butterknife.BindView;
@@ -34,14 +36,16 @@ public class CurrentProgramViewHolder extends BaseViewHolder<CurrentProgramVO> {
 
     private MeditateSeriesDelegate currentProgramDelegate;
 
+    CurrentProgramVO currentProgramVO;
+
     public CurrentProgramViewHolder(View itemView, MeditateSeriesDelegate currentProgramDelegate) {
         super(itemView);
         this.currentProgramDelegate = currentProgramDelegate;
-        ButterKnife.bind(this, itemView);
     }
 
     @Override
     public void setData(CurrentProgramVO data) {
+        currentProgramVO = data;
         tv_name.setText(data.getTitle());
         btn_start.setText(data.getCurrentPeriod());
         String time = data.getAverageLengths().get(0) + " mins";
@@ -51,6 +55,6 @@ public class CurrentProgramViewHolder extends BaseViewHolder<CurrentProgramVO> {
 
     @OnClick(R.id.btn_start)
     void onClickPeriod() {
-        currentProgramDelegate.onTapPeriod();
+        currentProgramDelegate.onTapItem(currentProgramVO);
     }
 }

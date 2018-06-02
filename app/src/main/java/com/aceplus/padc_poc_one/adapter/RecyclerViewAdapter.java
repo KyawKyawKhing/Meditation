@@ -45,7 +45,7 @@ public class RecyclerViewAdapter extends BaseRecyclerAdapter<BaseViewHolder, Mai
             return new CurrentProgramViewHolder(start_view, meditateSeriesDelegate);
         } else if (viewType == HORIZONTAL_RV_LAYOUT) {
             View horizontal_view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
-            return new CategoriesProgramsViewHolder(horizontal_view);
+            return new CategoriesProgramsViewHolder(horizontal_view, meditateSeriesDelegate);
         } else if (viewType == TV_LAYOUT) {
             View single_view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_tv, parent, false);
             return new SingleViewHolder(single_view);

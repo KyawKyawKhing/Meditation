@@ -1,8 +1,12 @@
 package com.aceplus.padc_poc_one.data.model;
 
+import android.util.Log;
+
 import com.aceplus.padc_poc_one.data.vo.MainVO;
+import com.aceplus.padc_poc_one.data.vo.SingleVO;
 import com.aceplus.padc_poc_one.events.RestApiEvents;
 import com.aceplus.padc_poc_one.network.MeditateDataAgentImpl;
+import com.aceplus.padc_poc_one.network.MeditateDateAgent;
 import com.aceplus.padc_poc_one.utils.AppConstants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -21,11 +25,13 @@ public class MeditateModel {
     private static MeditateModel INSTANCE;
     private List<MainVO> mainVOList;
     private int pageIndex = 1;
+    private MeditateDateAgent meditateDateAgent;
 
 
     private MeditateModel() {
         EventBus.getDefault().register(this);
         mainVOList = new ArrayList<>();
+        meditateDateAgent = MeditateDataAgentImpl.getInstance();
     }
 
     public static MeditateModel getInstance() {
@@ -36,24 +42,29 @@ public class MeditateModel {
     }
 
     public void allDataLoaded() {
-        MeditateDataAgentImpl.getInstance().loadCurrentProgram(pageIndex, AppConstants.ACCESS_TOKEN);
+        meditateDateAgent.loadCurrentProgram(pageIndex, AppConstants.ACCESS_TOKEN);
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onCurrentProgramLoaded(RestApiEvents.CurrentProgramDataLoadedEvent event) {
         mainVOList.add(event.getCurrentProgramVO());
+        Log.e("mainvo list size", mainVOList.size() + "");
         MeditateDataAgentImpl.getInstance().loadCategoriesPrograms(pageIndex, AppConstants.ACCESS_TOKEN);
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onCategoriesProgramsDataLoaded(RestApiEvents.CategoriesProgramsDataLoadedEvent event) {
         mainVOList.addAll(event.getCategoriesProgramsVOList());
+        Log.e("mainvo list size", mainVOList.size() + "");
+        mainVOList.add(new SingleVO("All Topics"));
+        Log.e("mainvo list size", mainVOList.size() + "");
         MeditateDataAgentImpl.getInstance().loadTopics(pageIndex, AppConstants.ACCESS_TOKEN);
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onTopicsDataLoaded(RestApiEvents.TopicsDataLoadedEvent event) {
         mainVOList.addAll(event.getTopicVOList());
+        Log.e("mainvo list size", mainVOList.size() + "");
         RestApiEvents.AllDataLoadedEvent allDataLoadedEvent = new RestApiEvents.AllDataLoadedEvent(mainVOList);
         EventBus.getDefault().post(allDataLoadedEvent);
     }

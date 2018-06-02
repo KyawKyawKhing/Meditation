@@ -24,6 +24,10 @@ public class CategoriesProgramsItemVO {
     @SerializedName("description")
     private String description;
 
+    @SerializedName("sessions")
+    private List<SessionsVO> sessionsVOS;
+
+
     public String getTitle() {
         return title;
     }
@@ -38,5 +42,9 @@ public class CategoriesProgramsItemVO {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<SessionsVO> getSessionsVOS() {
+        return sessionsVOS;
     }
 }

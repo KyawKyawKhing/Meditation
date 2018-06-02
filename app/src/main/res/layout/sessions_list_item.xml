@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_medium_x"
+    android:layout_marginTop="@dimen/margin_normal"
+    android:background="@color/mainBG">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:paddingStart="@dimen/margin_small"
+            android:text="1"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/tv_session_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_toEndOf="@+id/tv_no"
+            android:text="This is title"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/tv_session_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_alignParentEnd="true"
+            android:text="22:20"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/font_normal" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

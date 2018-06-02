@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/margin_normal"
     android:layout_marginEnd="@dimen/margin_normal"
+    android:layout_marginStart="@dimen/margin_normal"
     android:background="@color/mainBG"
     tools:context="com.aceplus.padc_poc_one.ui.fragment.MeFragment">
 
@@ -52,7 +52,7 @@
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Title"
+                        android:text="Get Unlimited Access"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/font_normal"
                         android:textStyle="bold" />
@@ -61,7 +61,7 @@
                         android:id="@+id/tv_desp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="This is description"
+                        android:text="To the world's best teachers"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/font_small" />
                 </LinearLayout>

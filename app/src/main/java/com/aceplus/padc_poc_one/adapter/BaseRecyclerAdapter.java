@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
+import com.aceplus.padc_poc_one.data.vo.MainVO;
 import com.aceplus.padc_poc_one.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
