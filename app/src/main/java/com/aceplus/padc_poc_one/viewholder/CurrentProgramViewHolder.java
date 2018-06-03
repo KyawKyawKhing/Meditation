@@ -1,5 +1,6 @@
 package com.aceplus.padc_poc_one.viewholder;
 
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,10 @@ import butterknife.OnClick;
  */
 
 public class CurrentProgramViewHolder extends BaseViewHolder<CurrentProgramVO> {
+
+    @BindView(R.id.current_cv)
+    CardView currentCV;
+
     @BindView(R.id.tv_title)
     TextView tv_title;
 
@@ -55,6 +60,11 @@ public class CurrentProgramViewHolder extends BaseViewHolder<CurrentProgramVO> {
 
     @OnClick(R.id.btn_start)
     void onClickPeriod() {
-        currentProgramDelegate.onTapItem(currentProgramVO);
+        currentProgramDelegate.onCurrentItemTap();
+    }
+
+    @OnClick(R.id.current_cv)
+    void onClickCurrentProgram() {
+        currentProgramDelegate.onCurrentItemTap();
     }
 }

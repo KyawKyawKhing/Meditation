@@ -30,10 +30,4 @@ public class SessionAdapter extends BaseRecyclerAdapter<SessionViewHolder, Sessi
         return new SessionViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(SessionViewHolder holder, int position) {
-        super.onBindViewHolder(holder, position);
-        String no = (position + 1) + "";
-        holder.tvNo.setText(no);
-    }
 }

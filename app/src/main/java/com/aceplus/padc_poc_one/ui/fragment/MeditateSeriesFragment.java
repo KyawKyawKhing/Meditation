@@ -1,7 +1,11 @@
 package com.aceplus.padc_poc_one.ui.fragment;
 
 
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,10 +34,11 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 
-public class MeditateSeriesFragment extends Fragment implements MeditateSeriesDelegate {
+public class MeditateSeriesFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
+    MeditateSeriesDelegate meditateSeriesDelegate;
 
     public MeditateSeriesFragment() {
         // Required empty public constructor
@@ -50,7 +55,7 @@ public class MeditateSeriesFragment extends Fragment implements MeditateSeriesDe
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_meditate_series, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        adapter = new RecyclerViewAdapter(getContext(), this);
+        adapter = new RecyclerViewAdapter(getContext(), meditateSeriesDelegate);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
@@ -79,24 +84,17 @@ public class MeditateSeriesFragment extends Fragment implements MeditateSeriesDe
         Toast.makeText(getContext(), event.getErrorMsg(), Toast.LENGTH_SHORT).show();
     }
 
-
     @Override
-    public void onTapItem(CurrentProgramVO currentProgramVO) {
-        Gson gson = new Gson();
-        Intent detailIntent = new Intent(getContext(), DetailShowActivity.class);
-        detailIntent.putExtra("vo", "current");
-        detailIntent.putExtra("detailVO" + "", gson.toJson(currentProgramVO));
-        Log.e("current vo", currentProgramVO.toString());
-        startActivity(detailIntent);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof MeditateSeriesDelegate) {
+            meditateSeriesDelegate = (MeditateSeriesDelegate) context;
+        }
     }
 
     @Override
-    public void onTapListItem(CategoriesProgramsItemVO categoriesProgramsItemVO) {
-        Gson gson = new Gson();
-        Intent detailIntent = new Intent(getContext(), DetailShowActivity.class);
-        detailIntent.putExtra("vo", "categories");
-        detailIntent.putExtra("detailVO" + "", gson.toJson(categoriesProgramsItemVO));
-        Log.e("category vo", categoriesProgramsItemVO.toString());
-        startActivity(detailIntent);
+    public void onDetach() {
+        super.onDetach();
+        meditateSeriesDelegate = null;
     }
 }

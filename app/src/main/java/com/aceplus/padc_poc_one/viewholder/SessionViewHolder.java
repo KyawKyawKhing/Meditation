@@ -29,6 +29,8 @@ public class SessionViewHolder extends BaseViewHolder<SessionsVO> {
 
     @Override
     public void setData(SessionsVO data) {
+        String no = (getAdapterPosition() + 1) + "";
+        tvNo.setText(no);
         tvSessionTitle.setText(data.getTitle());
         String min = String.valueOf(data.getLengthSeconds() / 60);
         String sec = String.valueOf(data.getLengthSeconds() % 60);

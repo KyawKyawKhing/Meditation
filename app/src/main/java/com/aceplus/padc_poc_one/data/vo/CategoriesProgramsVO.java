@@ -12,11 +12,18 @@ import java.util.ArrayList;
 
 public class CategoriesProgramsVO implements MainVO {
 
+    @SerializedName("category-id")
+    private String categoryId;
+
     @SerializedName("title")
     private String title;
 
     @SerializedName("programs")
     private ArrayList<CategoriesProgramsItemVO> categoriesProgramsItemVOS;
+
+    public String getCategoryId() {
+        return categoryId;
+    }
 
     public String getTitle() {
         return title;
@@ -25,4 +32,5 @@ public class CategoriesProgramsVO implements MainVO {
     public ArrayList<CategoriesProgramsItemVO> getCategoriesProgramsItemVOS() {
         return categoriesProgramsItemVOS;
     }
+
 }

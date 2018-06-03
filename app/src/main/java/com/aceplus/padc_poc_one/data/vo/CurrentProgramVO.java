@@ -11,6 +11,9 @@ import java.util.List;
 
 public class CurrentProgramVO implements MainVO {
 
+    @SerializedName("program-id")
+    private String programId;
+
     @SerializedName("title")
     private String title;
 
@@ -28,6 +31,10 @@ public class CurrentProgramVO implements MainVO {
 
     @SerializedName("sessions")
     private List<SessionsVO> sessionsVOS;
+
+    public String getProgramId() {
+        return programId;
+    }
 
     public String getTitle() {
         return title;

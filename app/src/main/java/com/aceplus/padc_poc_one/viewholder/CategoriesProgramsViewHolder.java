@@ -25,21 +25,23 @@ public class CategoriesProgramsViewHolder extends BaseViewHolder<CategoriesProgr
     TextView tv_title;
     @BindView(R.id.recyclerView_Horizontal)
     RecyclerView recyclerView;
+    RecyclerListitemAdapter adapter;
 
     private MeditateSeriesDelegate delegate;
 
     public CategoriesProgramsViewHolder(View itemView, MeditateSeriesDelegate delegate) {
         super(itemView);
         this.delegate = delegate;
+        adapter = new RecyclerListitemAdapter(itemView.getContext(), delegate);
     }
 
     @Override
     public void setData(CategoriesProgramsVO data) {
-        RecyclerListitemAdapter adapter = new RecyclerListitemAdapter(itemView.getContext(), delegate);
         tv_title.setText(data.getTitle());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         adapter.setNewData(data.getCategoriesProgramsItemVOS());
+        adapter.setCategory(data);
     }
 
 }

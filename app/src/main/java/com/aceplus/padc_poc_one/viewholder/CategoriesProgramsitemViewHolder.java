@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.aceplus.padc_poc_one.R;
 import com.aceplus.padc_poc_one.data.vo.CategoriesProgramsItemVO;
+import com.aceplus.padc_poc_one.data.vo.CategoriesProgramsVO;
 import com.aceplus.padc_poc_one.delegates.MeditateSeriesDelegate;
 import com.bumptech.glide.Glide;
 
@@ -31,6 +32,7 @@ public class CategoriesProgramsitemViewHolder extends BaseViewHolder<CategoriesP
 
     private MeditateSeriesDelegate delegate;
     private CategoriesProgramsItemVO categoriesProgramsItemVO;
+    private CategoriesProgramsVO categoriesProgramsVO;
 
     public CategoriesProgramsitemViewHolder(View itemView, MeditateSeriesDelegate delegate) {
         super(itemView);
@@ -53,6 +55,11 @@ public class CategoriesProgramsitemViewHolder extends BaseViewHolder<CategoriesP
 
     @Override
     public void onClick(View v) {
-        delegate.onTapListItem(categoriesProgramsItemVO);
+        delegate.onListItemTap(categoriesProgramsVO.getCategoryId(), categoriesProgramsItemVO.getProgramId());
     }
+
+    public void setRootCategory(CategoriesProgramsVO category) {
+        this.categoriesProgramsVO = category;
+    }
+
 }

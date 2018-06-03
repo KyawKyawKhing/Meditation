@@ -9,7 +9,8 @@ import com.aceplus.padc_poc_one.data.vo.MainVO;
  */
 
 public interface MeditateSeriesDelegate {
-    void onTapItem(CurrentProgramVO currentProgramVO);
 
-    void onTapListItem(CategoriesProgramsItemVO categoriesProgramsItemVO);
+    void onCurrentItemTap();
+
+    void onListItemTap(String categoryId, String categoryItemId);
 }

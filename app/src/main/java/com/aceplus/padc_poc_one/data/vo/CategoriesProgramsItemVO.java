@@ -12,6 +12,9 @@ import java.util.List;
 
 public class CategoriesProgramsItemVO {
 
+    @SerializedName("program-id")
+    private String programId;
+
     @SerializedName("title")
     private String title;
 
@@ -27,6 +30,9 @@ public class CategoriesProgramsItemVO {
     @SerializedName("sessions")
     private List<SessionsVO> sessionsVOS;
 
+    public String getProgramId() {
+        return programId;
+    }
 
     public String getTitle() {
         return title;

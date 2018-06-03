@@ -2,6 +2,9 @@ package com.aceplus.padc_poc_one.data.model;
 
 import android.util.Log;
 
+import com.aceplus.padc_poc_one.data.vo.CategoriesProgramsItemVO;
+import com.aceplus.padc_poc_one.data.vo.CategoriesProgramsVO;
+import com.aceplus.padc_poc_one.data.vo.CurrentProgramVO;
 import com.aceplus.padc_poc_one.data.vo.MainVO;
 import com.aceplus.padc_poc_one.data.vo.SingleVO;
 import com.aceplus.padc_poc_one.events.RestApiEvents;
@@ -74,5 +77,29 @@ public class MeditateModel {
             mainVOList = new ArrayList<>();
         }
         return mainVOList;
+    }
+
+    public CurrentProgramVO getCurrentProgramVO() {
+        for (MainVO mainVO : mainVOList) {
+            if (mainVO instanceof CurrentProgramVO) {
+                return (CurrentProgramVO) mainVO;
+            }
+        }
+        return null;
+    }
+
+    public CategoriesProgramsItemVO getCategoriesProgramsItemVO(String categoryId, String categoryItemId) {
+        for (MainVO mainVO : mainVOList) {
+            if (mainVO instanceof CategoriesProgramsVO) {
+                if (((CategoriesProgramsVO) mainVO).getCategoryId().equals(categoryId)) {
+                    for (CategoriesProgramsItemVO categoriesProgramsItemVO : ((CategoriesProgramsVO) mainVO).getCategoriesProgramsItemVOS()) {
+                        if (categoriesProgramsItemVO.getProgramId().equals(categoryItemId)) {
+                            return categoriesProgramsItemVO;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
